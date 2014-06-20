@@ -1,0 +1,68 @@
+apply plugin: 'android-sdk-manager'
+apply plugin: 'android'
+apply from: '../config/sign.gradle'
+apply from: '../config/version.gradle'
+
+android {
+    compileSdkVersion rootProject.ext.compileSdkVersion
+    buildToolsVersion rootProject.ext.buildToolsVersion
+
+    defaultConfig {
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
+        versionCode 1
+        versionName '1'
+        testInstrumentationRunner 'com.google.android.apps.common.testing.testrunner.GoogleInstrumentationTestRunner'
+    }
+
+    compileOptions {
+        encoding = 'UTF-8'
+        sourceCompatibility JavaVersion.<%= javaLanguageLevel %>
+        targetCompatibility JavaVersion.<%= javaLanguageLevel %>
+    }
+
+    lintOptions {
+        checkReleaseBuilds true
+        abortOnError false
+    }
+
+    signingConfigs {
+        release {
+            storeFile file(System.getenv("ANDROID_KEYSTORE_FILE")?:debug.storeFile
+            storePassword ''
+            keyAlias System.getenv("ANDROID_KEYALIAS")?:''
+            keyPassword ''
+        }
+    }
+
+    buildTypes {
+        debug {
+            applicationIdSuffix '.dev'
+        }
+        release {
+            zipAlign true
+            runProguard true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
+        }
+    }
+}
+
+dependencies {
+    // Google Libraries
+    compile rootProject.ext.libraries.playServices
+    compile rootProject.ext.libraries.gridLayoutV7
+    compile rootProject.ext.libraries.supportV4
+    compile rootProject.ext.libraries.appCompat
+
+    // Java/Android libraries
+    // Put your Java/Android libraries here //
+    // Use: http://gradleplease.appspot.com to find gradelized libraries! //
+
+    // Tests
+    // Refer to https://github.com/JakeWharton/double-espresso if you need more help
+    androidTestCompile 'com.jakewharton.espresso:espresso:1.1-r3'
+    androidTestCompile('com.jakewharton.espresso:espresso-support-v4:1.1-r3') {
+        exclude group: 'com.android.support', module: 'support-v4'
+    }
+}

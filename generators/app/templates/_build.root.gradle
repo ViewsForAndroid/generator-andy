@@ -1,0 +1,32 @@
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+
+    dependencies {
+        classpath 'com.android.tools.build:gradle:0.11.+'
+        classpath 'com.jakewharton.sdkmanager:gradle-plugin:0.10.+'
+    }
+}
+
+allprojects {
+    repositories {
+        mavenCentral()
+    }
+}
+
+ext {
+    compileSdkVersion = 19
+    buildToolsVersion = '19.1.0'
+    minSdkVersion = 14
+    targetSdkVersion = 19
+    renderscriptTargetApi = 19
+    renderscriptSupportMode = true
+}
+
+ext.libraries = [
+    playServices: 'com.google.android.gms:play-services:4.3.23',
+    supportV4: 'com.android.support:support-v4:19.1.0',
+    gridLayoutV7: 'com.android.support:gridlayout-v7:19.0.1',
+    appCompat: 'com.android.support:appcompat-v7:19.1.0'
+]

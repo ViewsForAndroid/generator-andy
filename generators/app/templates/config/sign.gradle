@@ -1,0 +1,44 @@
+import groovy.swing.SwingBuilder
+
+// Thanks to Tim Roes for creating this tip!
+// https://www.timroes.de/2014/01/19/using-password-prompts-with-gradle-build-files/
+gradle.taskGraph.whenReady { taskGraph ->
+    if(taskGraph.hasTask(':sample:assembleRelease')) {
+        def pass = ''
+
+        if(System.console() == null) {
+            new SwingBuilder().edt {
+                dialog(
+                    modal: true,
+                    title: 'Enter password',
+                    alwaysOnTop: true,
+                    resizable: false,
+                    locationRelativeTo: null,
+                    pack: true,
+                    show: true
+                ) {
+                    vbox {
+                        label(text: "Please enter key passphrase:")
+                        input = passwordField()
+                        button(defaultButton: true, text: 'OK', actionPerformed: {
+                            pass = input.password;
+                            dispose();
+                        })
+                    }
+                }
+            }
+        } else {
+            pass = System.console().readPassword("\nPlease enter key passphrase: ")
+            pass = new String(pass)
+        }
+
+        if(pass.size() <= 0) {
+            throw new InvalidUserDataException("You must enter a password to proceed.")
+        }
+
+        // This assumes that the stored password is the same as the key password.
+        // Change it as needed!
+        android.signingConfigs.release.storePassword = pass
+        android.signingConfigs.release.keyPassword = pass
+    }
+}
