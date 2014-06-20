@@ -2,7 +2,7 @@
 
 **NOTE:** This is a work in progress! It's not finished and may be there bugs here and there! You've been warned, pal!
 
-* [![Build Status](https://secure.travis-ci.org/viewsforandroid/generator-andy?branch=develop)](https://travis-ci.org/viewsforandroid/generator-andy)
+* [![Build Status](https://travis-ci.org/ViewsForAndroid/generator-andy.svg?branch=develop)](https://travis-ci.org/viewsforandroid/generator-andy)
 * [![Dependency Status](https://david-dm.org/viewsforandroid/generator-andy.png)](https://david-dm.org/viewsforandroid/generator-andy)
 * [![devDependency Status](https://david-dm.org/viewsforandroid/generator-andy/dev-status.png)](https://david-dm.org/viewsforandroid/generator-andy#info=devDependencies)
 
