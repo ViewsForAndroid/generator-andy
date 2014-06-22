@@ -143,6 +143,7 @@ var AndyGenerator = yeoman.generators.Base.extend({
     // Generate basic dirs
     this.mkdir(this.moduleName);
     this.mkdir('art');
+    this.mkdir('libraries');
     this.mkdir(this.moduleName + '/libs');
     this.mkdir(this.moduleName + '/src');
     this._mkdirs(this.moduleName + '/src', ['main', 'debug', 'release', 'androidTest']);
@@ -163,6 +164,7 @@ var AndyGenerator = yeoman.generators.Base.extend({
     this.copy('gradle.properties', 'gradle.properties');
     this.copy('gradlew', 'gradlew');
     this.copy('gradlew.bat', 'gradlew.bat');
+    this.copy('version.properties', 'version.properties');
     this.template('_settings.gradle', 'settings.gradle');
     this.template('_build.root.gradle', 'build.gradle');
     this.template('_build.app.gradle', this.moduleName + '/build.gradle');
