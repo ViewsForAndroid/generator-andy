@@ -1,6 +1,6 @@
 {
   "name": "generator-andy",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "A fast and intuitive Yeoman generator for Android with great attitude!",
   "license": "MIT",
   "main": "app/index.js",
