@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link href='https://fonts.googleapis.com/css?family=Architects+Daughter' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="stylesheets/pygment_trac.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print" />
+
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <title>Generator-andy by ViewsForAndroid</title>
+  </head>
+
+  <body>
+    <header>
+      <div class="inner">
+        <h1>Generator-andy</h1>
+        <h2>Andy helps you to quickly create a well configured, well behaved Android application (and project libraries too!). It&#39;s the spiritual successor to Android KickstartR project but updated to the modern times!</h2>
+        <a href="https://github.com/ViewsForAndroid/generator-andy" class="button"><small>View project on</small>GitHub</a>
+      </div>
+    </header>
+
+    <div id="content-wrapper">
+      <div class="inner clearfix">
+        <section id="main-content">
+          <h1>
+<a name="andy" class="anchor" href="#andy"><span class="octicon octicon-link"></span></a>Andy</h1>
+
+<p><a href="https://travis-ci.org/viewsforandroid/generator-andy"><img src="https://travis-ci.org/ViewsForAndroid/generator-andy.svg?branch=develop" alt="Build Status"></a>
+<a href="https://david-dm.org/viewsforandroid/generator-andy"><img src="https://david-dm.org/viewsforandroid/generator-andy.png" alt="Dependency Status"></a>
+<a href="https://david-dm.org/viewsforandroid/generator-andy#info=devDependencies"><img src="https://david-dm.org/viewsforandroid/generator-andy/dev-status.png" alt="devDependency Status"></a></p>
+
+<h2>
+<a name="introduction" class="anchor" href="#introduction"><span class="octicon octicon-link"></span></a>Introduction</h2>
+
+<p><strong>NOTE: Currently Andy is in heavy development! It's not finished and stable by any means, so expect a lot of bugs and nasty things! You've been warned, pal!</strong></p>
+
+<p>Let's think about how we start a new Android project:</p>
+
+<ol>
+<li>Open Android Studio.</li>
+<li>Fill the fields (application name, package name…)</li>
+<li>Select what support libraries do you want.</li>
+<li>Wait 'till Android Studio indexes everything.</li>
+<li>Start editing <code>build.gradle</code> to add dependencies, then your custom deploy code and configurations (and scratch your head thinking why some things don't work as expected!)…</li>
+<li>Start coding!</li>
+</ol><p><strong>Introducing… ANDY!</strong></p>
+
+<p>Andy helps you to quickly create a <strong>well configured, well behaved</strong> Android application (and project libraries too!). It's the spiritual successor to <a href="http://androidkickstartr.com/">Android KickstartR</a> project but updated to the modern times!</p>
+
+<p>With Andy you have <em>de facto</em> the following features:</p>
+
+<ul>
+<li>It will download automatically all required <code>SDKs</code> and <code>Support Libraries</code> as necessary because it's configured to use the great <a href="https://github.com/JakeWharton/sdk-manager-plugin"><code>SDK Manager Plugin</code></a> written by the brave and the bold <a href="https://github.com/JakeWharton">Jake Warthon</a>!</li>
+<li>It will create automatically all <code>androidTest</code>, <code>debug</code> and <code>release</code> directories! And… as it creates an <code>androidTest</code> directory, it includes <code>Expresso</code> by default!</li>
+<li>It creates a <code>version.properties</code> file to update your app version easily!</li>
+<li>It configures <code>gradle</code> to display a dialog (or password prompt) when signing your application (as <a href="https://www.timroes.de/2014/01/19/using-password-prompts-with-gradle-build-files/">Tim Rodes has described in this great post</a>!).</li>
+<li>It enables by default the <code>gradle daemon</code> to speed things up when compiling from terminal (Android Studio enables this by default).</li>
+<li>It generates a properly <code>.gitignore</code> file.</li>
+<li>More to come!</li>
+</ul><p>Andy is built using <a href="http://yeoman.io/">Yeoman</a>, a fantastic tool for creating scaffolds for Web and whatever application you could imagine of!</p>
+
+<h2>
+<a name="getting-started" class="anchor" href="#getting-started"><span class="octicon octicon-link"></span></a>Getting Started</h2>
+
+<h3>
+<a name="installation" class="anchor" href="#installation"><span class="octicon octicon-link"></span></a>Installation</h3>
+
+<p>As Andy is a Yeoman plugin, it's mandatory to install first Yeoman if you didn't do it before:</p>
+
+<pre><code>$ npm install -g yo
+</code></pre>
+
+<p>Once the step before is finished, you can install Andy properly:</p>
+
+<pre><code>npm install -g generator-andy
+</code></pre>
+
+<h2>
+<a name="usage" class="anchor" href="#usage"><span class="octicon octicon-link"></span></a>Usage</h2>
+
+<p>Create a new directory where you want to put your application code and <code>cd</code> into it, then call Andy:</p>
+
+<pre><code>$ yo andy
+</code></pre>
+
+<h2>
+<a name="generators" class="anchor" href="#generators"><span class="octicon octicon-link"></span></a>Generators</h2>
+
+<p>By default Andy includes two generators:</p>
+
+<ul>
+<li><a href="#app">android:app</a></li>
+<li><a href="#library">android:library</a></li>
+</ul><h3>
+<a name="app" class="anchor" href="#app"><span class="octicon octicon-link"></span></a>App</h3>
+
+<p>Finish this section!</p>
+
+<h3>
+<a name="library" class="anchor" href="#library"><span class="octicon octicon-link"></span></a>Library</h3>
+
+<p>Not developed yet!</p>
+
+<h2>
+<a name="todo" class="anchor" href="#todo"><span class="octicon octicon-link"></span></a>ToDo</h2>
+
+<p>There are a lot of things to do, but for now the most important ones are:</p>
+
+<ul>
+<li>Finish current iteration for generating a complete application project.</li>
+<li>Write the library generator and make it composable with the app generator.</li>
+<li>Write properly tests!</li>
+<li>…</li>
+</ul><h2>
+<a name="contributions" class="anchor" href="#contributions"><span class="octicon octicon-link"></span></a>Contributions</h2>
+
+<p>Pull requests and issues are very welcome! Keep in mind that main development is done in the <code>develop</code> branch!</p>
+
+<h2>
+<a name="acknowledgements" class="anchor" href="#acknowledgements"><span class="octicon octicon-link"></span></a>Acknowledgements</h2>
+
+<p>This project is partially inspired by the work done by <a href="https://github.com/groupsky">Groupsky</a> who started his own <a href="https://github.com/groupsky/generator-android/"><code>generator-android</code></a> project.</p>
+
+<h2>
+<a name="creator" class="anchor" href="#creator"><span class="octicon octicon-link"></span></a>Creator</h2>
+
+<p>Aldo Borrero González – <a href="mailto:aldo@aldoborrero.com">aldo@aldoborrero.com</a></p>
+
+<ul>
+<li><a href="https://twitter.com/aldoborrero">@aldoborrero</a></li>
+<li><a href="https://plus.google.com/+AldoBorrero">+AldoBorrero</a></li>
+</ul><h2>
+<a name="license" class="anchor" href="#license"><span class="octicon octicon-link"></span></a>License</h2>
+
+<p>Andy source code is released under the <a href="http://en.wikipedia.org/wiki/MIT_License">MIT License</a>!</p>
+        </section>
+
+        <aside id="sidebar">
+          <a href="https://github.com/ViewsForAndroid/generator-andy/zipball/master" class="button">
+            <small>Download</small>
+            .zip file
+          </a>
+          <a href="https://github.com/ViewsForAndroid/generator-andy/tarball/master" class="button">
+            <small>Download</small>
+            .tar.gz file
+          </a>
+
+          <p class="repo-owner"><a href="https://github.com/ViewsForAndroid/generator-andy"></a> is maintained by <a href="https://github.com/ViewsForAndroid">ViewsForAndroid</a>.</p>
+
+          <p>This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the Architect theme by <a href="https://twitter.com/jasonlong">Jason Long</a>.</p>
+        </aside>
+      </div>
+    </div>
+
+  
+  </body>
+</html>
