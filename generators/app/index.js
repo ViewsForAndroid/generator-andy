@@ -1,5 +1,4 @@
 'use strict';
-
 var util = require('util');
 var path = require('path');
 var yeoman = require('yeoman-generator');
@@ -30,6 +29,13 @@ var androidSDKversions = [
   return {name: name, value: value + 1};
 });
 
+var supportLibrariesChoices = [
+  {name: 'Fragments', value: 'fragments', checked: true},
+  {name: 'GridLayout', value: 'gridlayout', checked: false},
+  {name: 'Navigation Drawer', value: 'navigationdrawer', checked: false},
+  {name: 'ActionBar', value: 'actionbar', checked: false}
+];
+
 var AndyGenerator = yeoman.generators.Base.extend({
   constructor: function () {
     yeoman.generators.Base.apply(this, arguments);
@@ -40,6 +46,7 @@ var AndyGenerator = yeoman.generators.Base.extend({
   askFor: function () {
     var done = this.async();
 
+    // say hello Yo!
     this.log(yosay(this._randomQuote()));
 
     var prompts = [
@@ -87,7 +94,7 @@ var AndyGenerator = yeoman.generators.Base.extend({
           {name: '6.0 – @Override in interfaces', value: 'VERSION_1_6'},
           {name: '7.0 – Diamonds, ARM, multi-catch…', value: 'VERSION_1_7'}
         ],
-        default: 0 // 6.0
+        default: 1 // 7.0 – Let's use an advanced version of Java, plz!
       },
       {
         name: 'theme',
@@ -107,12 +114,7 @@ var AndyGenerator = yeoman.generators.Base.extend({
         name: 'supportLibraries',
         message: 'Support mode:',
         type: 'checkbox',
-        choices: [
-          {name: 'GridLayout', value: 'gridlayout', checked: false},
-          {name: 'Fragments', value: 'fragments', checked: false},
-          {name: 'Navigation Drawer', value: 'navigationdrawer', checked: false},
-          {name: 'ActionBar', value: 'actionbar', checked: false}
-        ],
+        choices: supportLibrariesChoices
       }
     ];
 
@@ -120,16 +122,17 @@ var AndyGenerator = yeoman.generators.Base.extend({
       this.applicationName = props.applicationName;
       this.moduleName = props.moduleName;
       this.packageName = props.packageName;
+      this.packagePath = this.packageName.replace(/\./g, '/');
       this.minimumApiLevel = props.minimumApiLevel;
       this.targetSdk = props.targetSdk;
       this.compileWith = props.compileWith;
       this.javaLanguageLevel = props.javaLanguageLevel;
       this.theme = props.theme;
 
-      this.packagePath = this.packageName.replace(/\./g, '/');
-      this.className = this._.classify(this._.slugify(this._.humanize(props.applicationName.replace(/ /g, ''))));
-
-      // TODO: Finish recolecting parameters!
+      //this.supportLibraries = {};
+      //supportLibrariesChoices.forEach(function(lib) {
+      //  this.supportLibraries[lib.value] = props.supportLibraries.indexOf(lib.value) != -1;
+      //}.bind(this));
 
       done();
     }.bind(this));
@@ -154,13 +157,12 @@ var AndyGenerator = yeoman.generators.Base.extend({
     this.template('_src/_MainActivity.java', this.moduleName + '/src/main/java/' + this.packagePath + '/MainActivity.java');
     this.directory('_res', this.moduleName + '/src/main/res');
 
-    this.directory('config', 'config');
-
     this.copy('proguard-rules.pro', this.moduleName + '/proguard-rules.pro');
   },
 
   gradle: function() {
     this.directory('gradle', 'gradle');
+    this.directory('tasks', 'tasks');
     this.copy('gradle.properties', 'gradle.properties');
     this.copy('gradlew', 'gradlew');
     this.copy('gradlew.bat', 'gradlew.bat');

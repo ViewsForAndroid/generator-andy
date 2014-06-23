@@ -20,19 +20,19 @@ describe('Andy Generator', function () {
 
   it('should create expected files', function (done) {
     var expected = [
-      'test/build.gradle',
-      'test/libs',
-      'test/src',
-      'test/proguard-rules.pro',
-      'config/sign.gradle',
-      'config/version.gradle',
-      'art/',
       '.gitignore',
       'gradle.properties',
       'gradlew',
       'gradlew.bat',
       'settings.gradle',
-      'build.gradle'
+      'build.gradle',
+      'test/build.gradle',
+      'test/libs',
+      'test/src',
+      'test/proguard-rules.pro',
+      'tasks/sign.gradle',
+      'tasks/version.gradle',
+      'art/'
     ];
 
     helpers.mockPrompt(this.app, {
