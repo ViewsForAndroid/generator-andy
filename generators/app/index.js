@@ -30,10 +30,11 @@ var androidSDKversions = [
 });
 
 var supportLibrariesChoices = [
-  {name: 'Fragments', value: 'fragments', checked: true},
-  {name: 'GridLayout', value: 'gridlayout', checked: false},
-  {name: 'Navigation Drawer', value: 'navigationdrawer', checked: false},
-  {name: 'ActionBar', value: 'actionbar', checked: false}
+  {name: 'PlayServices', value:'playServices', checked: false},
+  {name: 'Support', value: 'supportV4', checked: false},
+  {name: 'AppCompat', value: 'appCompat', checked: false},
+  {name: 'GridLayout', value: 'gridLayout', checked: false},
+  {name: 'MediaRouter', value: 'mediaRouter', checked: false},
 ];
 
 var AndyGenerator = yeoman.generators.Base.extend({
@@ -108,31 +109,40 @@ var AndyGenerator = yeoman.generators.Base.extend({
           ].map(function(name, value) {
             return {name: name, value: value};
           }),
-        default: 0 // None
+        default: 3 // Holo Light with Dark ActionBar
       },
       {
         name: 'supportLibraries',
         message: 'Support mode:',
         type: 'checkbox',
-        choices: supportLibrariesChoices
+        choices: supportLibrariesChoices,
+        filter: function(values) {
+          if (!values) {
+            return;
+          }
+          var answers = {};
+          this._.each(supportLibrariesChoices, function(lib) {
+            answers[lib.value] = values.indexOf(lib.value) !== -1;
+          });
+          return {
+            enabled: answers,
+            values: values
+          };
+        }.bind(this)
       }
     ];
 
-    this.prompt(prompts, function (props) {
-      this.applicationName = props.applicationName;
-      this.moduleName = props.moduleName;
-      this.packageName = props.packageName;
+    this.prompt(prompts, function (answers) {
+      this.applicationName = answers.applicationName;
+      this.moduleName = answers.moduleName;
+      this.packageName = answers.packageName;
       this.packagePath = this.packageName.replace(/\./g, '/');
-      this.minimumApiLevel = props.minimumApiLevel;
-      this.targetSdk = props.targetSdk;
-      this.compileWith = props.compileWith;
-      this.javaLanguageLevel = props.javaLanguageLevel;
-      this.theme = props.theme;
-
-      //this.supportLibraries = {};
-      //supportLibrariesChoices.forEach(function(lib) {
-      //  this.supportLibraries[lib.value] = props.supportLibraries.indexOf(lib.value) != -1;
-      //}.bind(this));
+      this.minimumApiLevel = answers.minimumApiLevel;
+      this.targetSdk = answers.targetSdk;
+      this.compileWith = answers.compileWith;
+      this.javaLanguageLevel = answers.javaLanguageLevel;
+      this.theme = answers.theme;
+      this.supportLibraries = answers.supportLibraries || {};
 
       done();
     }.bind(this));
@@ -182,9 +192,10 @@ var AndyGenerator = yeoman.generators.Base.extend({
     return quotes[Math.floor(Math.random() * quotes.length)];
   },
 
-  _mkdirs: function(path, dirs) {
+  _mkdirs: function(path, dirs, append) {
+    append = append ? '/' + append : '';
     dirs.forEach(function(entry) {
-      this.mkdir(path + '/' + entry);
+      this.mkdir(path + '/' + entry + append);
     }.bind(this));
   }
 

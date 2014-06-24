@@ -40,7 +40,6 @@ android {
             applicationIdSuffix '.dev'
         }
         release {
-            zipAlign true
             runProguard true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             signingConfig signingConfigs.release
@@ -50,10 +49,10 @@ android {
 
 dependencies {
     // Google Libraries
-    compile rootProject.ext.libraries.playServices
-    compile rootProject.ext.libraries.gridLayoutV7
-    compile rootProject.ext.libraries.supportV4
-    compile rootProject.ext.libraries.appCompat
+    <% if (supportLibraries.values) %>
+      <% _.each(supportLibraries.values, function(library){ %>
+    compile rootProject.ext.supportLibraries.<%= library %>
+      <% });%>
 
     // Java/Android libraries
     // Put your Java/Android libraries here //
