@@ -1,7 +1,7 @@
 apply plugin: 'android-sdk-manager'
 apply plugin: 'android'
-apply from: '../config/sign.gradle'
-apply from: '../config/version.gradle'
+apply from: '../tasks/sign.gradle'
+apply from: '../tasks/version.gradle'
 
 android {
     compileSdkVersion rootProject.ext.compileSdkVersion
