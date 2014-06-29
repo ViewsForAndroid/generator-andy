@@ -35,6 +35,8 @@ Andy is built using [Yeoman](http://yeoman.io/), a fantastic tool for creating s
 
 ## Getting Started
 
+**Note:** If you're planning to contribute refer to **Installation for devs** instead!
+
 ### Installation
 
 As Andy is a Yeoman plugin, it's mandatory to install first Yeoman if you didn't do it before:
@@ -49,6 +51,28 @@ Once the step before is finished, you can install Andy properly:
 npm install -g generator-andy
 ```
 
+### Installation for Devs
+
+As Andy is a Yeoman plugin, it's mandatory to install first Yeoman if you didn't do it before:
+
+```
+$ npm install -g yo
+```
+
+Clone this repository and `cd` into it:
+
+```
+$ git clone git@github.com:ViewsForAndroid/generator-andy.git && cd generator-andy
+```
+
+Link it:
+
+```
+$ npm link
+```
+
+Now you can use `yo andy` as usual!
+
 ## Usage
 
 Create a new directory where you want to put your application code and `cd` into it, then call Andy:
@@ -59,7 +83,7 @@ $ yo andy
 
 ## Generators
 
-By default Andy includes two generators:
+By default Andy includes the following generators:
 
 * [android:mobile](#mobile)
 * [android:wear](#wear)
