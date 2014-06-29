@@ -5,7 +5,7 @@ var yeoman = require('yeoman-generator');
 var yosay = require('yosay');
 var chalk = require('chalk');
 
-var androidSDKversions = [
+var androidSdkVersionsChoices = [
   'API 1: Android 1.0',
   'API 2: Android 1.1',
   'API 3: Android 1.5 (Cupcake)',
@@ -24,7 +24,8 @@ var androidSDKversions = [
   'API 16: Android 4.1 (Jelly Bean)',
   'API 17: Android 4.2 (Jelly Bean)',
   'API 18: Android 4.3 (Jelly Bean)',
-  'API 19: Android 4.4.2 (KitKat)'
+  'API 19: Android 4.4.2 (KitKat)',
+  //'API 20: Android L (Preview)'
 ].map(function(name, value) {
   return {name: name, value: value + 1};
 });
@@ -59,7 +60,7 @@ var AndyGenerator = yeoman.generators.Base.extend({
       {
         name: 'moduleName',
         message: 'Module name:',
-        default: 'app'
+        default: 'mobile'
       },
       {
         name: 'packageName',
@@ -70,21 +71,21 @@ var AndyGenerator = yeoman.generators.Base.extend({
         name: 'minimumApiLevel',
         message: 'Minimum required SDK:',
         type: 'list',
-        choices: androidSDKversions,
+        choices: androidSdkVersionsChoices,
         default: 13 // API 14: Android 4.0 (Ice Cream Sandwich)
       },
       {
         name: 'targetSdk',
         message: 'Target SDK:',
         type: 'list',
-        choices: androidSDKversions,
+        choices: androidSdkVersionsChoices,
         default: 18 // API 19: Android 4.4.2 (KitKat)
       },
       {
-        name: 'compileWith',
+        name: 'compileSdkVersion',
         message: 'Compile with:',
         type: 'list',
-        choices: androidSDKversions,
+        choices: androidSdkVersionsChoices,
         default: 18 // API 19: Android 4.4.2 (KitKat)
       },
       {
@@ -137,9 +138,9 @@ var AndyGenerator = yeoman.generators.Base.extend({
       this.moduleName = answers.moduleName;
       this.packageName = answers.packageName;
       this.packagePath = this.packageName.replace(/\./g, '/');
-      this.minimumApiLevel = answers.minimumApiLevel;
-      this.targetSdk = answers.targetSdk;
-      this.compileWith = answers.compileWith;
+      this.minimumApiLevelVersion = answers.minimumApiLevel;
+      this.targetSdkVersion = answers.targetSdk;
+      this.compileSdkVersion = answers.compileSdkVersion;
       this.javaLanguageLevel = answers.javaLanguageLevel;
       this.theme = answers.theme;
       this.supportLibraries = answers.supportLibraries || {};
@@ -177,6 +178,7 @@ var AndyGenerator = yeoman.generators.Base.extend({
     this.copy('gradlew', 'gradlew');
     this.copy('gradlew.bat', 'gradlew.bat');
     this.copy('version.properties', 'version.properties');
+    this.template('config.gradle', 'config.gradle');
     this.template('_settings.gradle', 'settings.gradle');
     this.template('_build.root.gradle', 'build.gradle');
     this.template('_build.app.gradle', this.moduleName + '/build.gradle');

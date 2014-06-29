@@ -19,7 +19,7 @@ Let's think about how we start a new Android project:
 
 **Introducing… ANDY!**
 
-Andy helps you to quickly create a **well configured, well behaved** Android application (and project libraries too!). It's the spiritual successor to [Android KickstartR](http://androidkickstartr.com/) project but updated to the modern times!
+Andy helps you to quickly create a **well configured, well behaved** Android application (including support for Android TV, Android Wear, Glass and project libraries too!). It's the spiritual successor to [Android KickstartR](http://androidkickstartr.com/) project but updated to the modern times!
 
 With Andy you have *de facto* the following features:
 
@@ -61,16 +61,35 @@ $ yo andy
 
 By default Andy includes two generators:
 
-* [android:app](#app)
+* [android:mobile](#mobile)
+* [android:wear](#wear)
+* [android:tv](#tv)
+* [android:glass](#glass)
 * [android:library](#library)
 
-### App
+### Mobile
+
+Create a mobile application!
+
+Finish this section!
+
+### Wear
+
+Create a wear application!
+
+Finish this section!
+
+### Glass
+
+Create a glass application!
 
 Finish this section!
 
 ### Library
 
-Not developed yet!
+Create a library component!
+
+Finish this section!
 
 ## ToDo
 
@@ -79,6 +98,7 @@ There are a lot of things to do, but for now the most important ones are:
 * Finish current iteration for generating a complete application project.
 * Write the library generator and make it composable with the app generator.
 * Write properly tests!
+* Create new generators based on Android TV, Android Wear and Glass.
 * …
 
 ## Contributions

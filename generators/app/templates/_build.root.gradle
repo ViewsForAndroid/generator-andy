@@ -1,33 +1,20 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+
 buildscript {
     repositories {
-        mavenCentral()
+        jcenter()
     }
 
     dependencies {
-        classpath 'com.android.tools.build:gradle:0.11.+'
+        classpath 'com.android.tools.build:gradle:0.12.+'
         classpath 'com.jakewharton.sdkmanager:gradle-plugin:0.10.+'
     }
 }
 
 allprojects {
     repositories {
-        mavenCentral()
+        jcenter()
     }
 }
 
-ext {
-    compileSdkVersion = 19
-    buildToolsVersion = '19.1.0'
-    minSdkVersion = 14
-    targetSdkVersion = 19
-    renderscriptTargetApi = 19
-    renderscriptSupportMode = true
-}
-
-ext.supportLibraries = [
-    playServices: 'com.google.android.gms:play-services:4.4.52',
-    supportV4: 'com.android.support:support-v4:19.1.0',
-    gridLayout: 'com.android.support:gridlayout-v7:19.1.0',
-    appCompat: 'com.android.support:appcompat-v7:19.1.0',
-    mediaRouter: 'com.android.support:mediarouter-v7:19.1.0'
-]
+apply from: 'config.gradle'
