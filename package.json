@@ -1,15 +1,15 @@
 {
   "name": "generator-andy",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "A fast and intuitive Yeoman generator for Android with great attitude!",
   "license": "MIT",
   "main": "app/index.js",
   "homepage": "https://github.com/ViewsForAndroid/generator-andy",
   "bugs": "https://github.com/ViewsForAndroid/generator-andy/issues",
   "repository": {
-      "type": "git",
-      "url": "git://github.com/ViewsForAndroid/generator-andy.git"
-    },
+    "type": "git",
+    "url": "git://github.com/ViewsForAndroid/generator-andy.git"
+  },
   "author": {
     "name": "Aldo Borrero",
     "email": "",
@@ -28,9 +28,11 @@
     "yeoman-generator"
   ],
   "dependencies": {
-    "yeoman-generator": "~0.17.0",
     "chalk": "~1.0.0",
-    "yosay": "^0.3.0"
+    "lodash": "^3.10.0",
+    "mkdirp": "^0.5.1",
+    "yeoman-generator": "~0.20.1",
+    "yosay": "^1.0.4"
   },
   "devDependencies": {
     "mocha": "*",
